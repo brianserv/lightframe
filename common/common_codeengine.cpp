@@ -295,7 +295,7 @@ int32_t CCodeEngine::Decode(const uint8_t *buf, const uint32_t size, uint32_t& o
 	{
 		return ret;
 	}
-	//data[len - 1] = '\0';
+	data[len] = '\0';
 
 	return S_OK;
 }

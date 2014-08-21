@@ -37,6 +37,12 @@ int32_t CFrameMessageConfig::Initialize(const char* szFileName/* = NULL*/, const
 		return E_LIBF_LOADCONFIGFILE;
 	}
 
+	if(access(m_szConfigFile, 0) < 0)
+	{
+		g_FrameLogEngine.WriteBaseLog(enmLogLevel_Info, "it's not found config %s!\n", m_szConfigFile);
+		return S_OK;
+	}
+
 	TiXmlDocument doc(m_szConfigFile);
 	if (!doc.LoadFile(TIXML_ENCODING_UTF8))
 	{
